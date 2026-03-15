@@ -1,0 +1,13 @@
+//
+// Created by Rauf on 16.03.2026.
+//
+
+#ifndef TASK2_REBILD_ALIEV_RAUF_ARCHITECTOR_H
+#define TASK2_REBILD_ALIEV_RAUF_ARCHITECTOR_H
+
+
+class Architector {
+};
+
+
+#endif //TASK2_REBILD_ALIEV_RAUF_ARCHITECTOR_H
