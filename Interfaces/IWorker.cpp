@@ -1,18 +1,16 @@
 #include "IWorker.h"
-#include <string>
-
-class IIWorker {
-public:
-    virtual ~IIWorker() = default;
-
-    virtual int worker(std::string name,float koef){}
 
 
-};
+IWorker::IWorker(string n, int a) {
+    name = n;
+    age = a;
+}
 
+IWorker::~IWorker() {}
 
-
-
-
-
-
+string IWorker::getName() {
+    return name;
+}
+int IWorker::getAge() {
+    return age;
+}

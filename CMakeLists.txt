@@ -8,12 +8,12 @@ add_executable(
         main.cpp
         Building.cpp
         Building.h
-        Interfaces/IWorker.cpp
         Interfaces/IWorker.h
-        Builder.cpp
-        Builder.h
+        Interfaces/Builder.cpp
+        Interfaces/Builder.h
         Interfaces/Architector.cpp
         Interfaces/Architector.h
         Interfaces/Ingener.cpp
         Interfaces/Ingener.h
+        Interfaces/IWorker.cpp
 )
