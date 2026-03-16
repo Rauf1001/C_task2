@@ -1,13 +1,11 @@
-//
-// Created by Rauf on 16.03.2026.
-//
+#pragma once
+#include "IWorker.h"
 
-#ifndef TASK2_REBILD_ALIEV_RAUF_INGENER_H
-#define TASK2_REBILD_ALIEV_RAUF_INGENER_H
+class Ingener : public IWorker {
+public:
+    Ingener(string name, int age);
 
-
-class Ingener {
+    double getCoefficient() override;
 };
 
 
-#endif //TASK2_REBILD_ALIEV_RAUF_INGENER_H
