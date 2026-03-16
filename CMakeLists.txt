@@ -16,4 +16,6 @@ add_executable(
         Interfaces/Ingener.cpp
         Interfaces/Ingener.h
         Interfaces/IWorker.cpp
+        Controller.cpp
+        Controller.h
 )

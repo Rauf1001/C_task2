@@ -20,9 +20,10 @@ public:
 
     int getCurrentPhase();
     void setCurrentPhase(int phase);
-
-    virtual int setCurrentPhase(int current_phase);
-
+    // int countCurrentPhase(int phase);
+    // void count()
+    void showCurrentPhase();
+    bool countCurrentPhase(double countPower, int currentWeek);
 };
 
 

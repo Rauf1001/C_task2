@@ -1,9 +1,12 @@
 #include <iostream>
+#include <string>
+#include "Interfaces/Builder.h"
+#include "Controller.h"
 
-#include "Interfaces/IWorker.h"
+using namespace std;
 
 int main() {
-
-    Buider = new IWorker.
-
+    Controller myController;
+    myController.writeController();
+    return 0;
 }
