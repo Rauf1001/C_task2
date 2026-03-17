@@ -11,9 +11,6 @@ void Controller::writeController() {
     setlocale(LC_ALL, "");
 
     Building *myBuilding = nullptr;
-    // Builder* myBuilder = nullptr;
-    // Architector* myArchitector = nullptr;
-    // Ingener* myIngener = nullptr;
     IWorker *currentWorker = nullptr;
 
     choice = -1;
@@ -21,10 +18,6 @@ void Controller::writeController() {
 
 
     while (choice != 0) {
-        // cout << "====Управление Строительной Компанией====\n";
-        // cout << "1.Создать объект стройки, 2.Нанять Рабочего, "
-        //         "3.Начать следующую неделю, 4. Посмотреть Статистику, 0 - Выход \n";
-        // cin >> choice;
         cout << "\n==== Управление Строительной Компанией ====\n";
         cout << "1. Создать объект стройки\n"
                 << "2. Нанять Рабочего\n"
@@ -35,13 +28,6 @@ void Controller::writeController() {
         cin >> choice;
 
         if (choice == 1) {
-            // cout << "====Новая Стройка====\n";
-            // cout << "Введите Имя Объекта: \n";
-            // cin >> tempName;
-            // cout << "Введите количество этажей: \n";
-            // cin >> tempFloor;
-            // cout << "Введите площадь этажа: \n";
-            // cin >> tempSquare;
             cout << "\n==== Новая Стройка ====\n";
             cout << "Введите Имя Объекта (одним словом): ";
             cin >> tempName;
@@ -52,75 +38,75 @@ void Controller::writeController() {
 
             myBuilding = new Building(tempName, tempFloor, tempSquare);
             cout << "\nУспешно создан объект " << myBuilding->getName() << "\nТекущая фаза: ";
-            << myBuilding->showCurrentPhase(myBuilding->getCurrentPhase())
-        }
-        if (choice == 2) {
-            cout << "====Нанять====\n";
-            cout << "====1.Архитектора====\n";
-            cout << "====2.Инженера====\n";
-            cout << "====3.Строителя====\n" << endl;
+            myBuilding->showCurrentPhase();
+        } else if (choice == 2) {
+            cout << "\n==== Нанять Рабочего ====\n";
+            cout << "1. Архитектор\n2. Инженер\n3. Строитель\nВаш выбор: ";
             cin >> workerChoice;
-            if (workerChoice == 1) {
-                cout << "\nВведите Имя Архитектора: ";
-                cin >> tempName;
-                cout << "Введите Возраст: ";
-                cin >> tempAge;
 
-                myArchitector = new Architector(tempName, tempAge);
-                countPower += myArchitector->getCoefficient();
-                cout << "\nУспешно нанят " << myArchitector->getName()
-                        << "\n(Коэффициент: " << myArchitector->getCoefficient() << ")" << endl;
-            } else if (workerChoice == 2) {
-                cout << "\nВведите Имя Строителя: ";
-                cin >> tempName;
-                cout << "Введите Возраст: ";
-                cin >> tempAge;
+            cout << "Введите Имя: ";
+            cin >> tempName;
+            cout << "Введите Возраст: ";
+            cin >> tempAge;
 
-                myBuilder = new Builder(tempName, tempAge);
-                countPower += myBuilder->getCoefficient();
-                cout << "\nУспешно нанят " << myBuilder->getName()
-                        << "\n(Коэффициент: " << myBuilder->getCoefficient() << ")" << endl;
-            } else if (workerChoice == 2) {
-                cout << "\nВведите Имя Инженера: ";
-                cin >> tempName;
-                cout << "Введите Возраст: ";
-                cin >> tempAge;
+            if (currentWorker != nullptr) delete currentWorker;
 
-                myIngener = new Ingener(tempName, tempAge);
-                countPower += myIngener->getCoefficient();
-                cout << "\nУспешно нанят " << myIngener->getName()
-                        << "\n(Коэффициент: " << myIngener->getCoefficient() << ")" << endl;
+            if (workerChoice == 1) currentWorker = new Architector(tempName, tempAge);
+            else if (workerChoice == 2) currentWorker = new Ingener(tempName, tempAge);
+            else if (workerChoice == 3) currentWorker = new Builder(tempName, tempAge);
+            else {
+                cout << "Ошибка выбора профессии!" << endl;
+                continue; // Начинаем цикл заново
+            }
+            countPower += currentWorker->getCoefficient();
+            cout << "\nУспешно нанят: " << currentWorker->getName()
+                    << " (Коэф: " << currentWorker->getCoefficient() << ")" << endl;
+        } else if (choice == 3) {
+            if (myBuilding == nullptr) {
+                cout << "Ошибка: Сначала создайте объект (пункт 1)!" << endl;
+                continue;
+            }
+            currentWeek += 1;
+            cout << "\n==== Наступила Неделя " << currentWeek << " ====" << endl;
+            bool phaseChanged = myBuilding->countCurrentPhase(countPower, currentWeek);
+            if (phaseChanged) {
+                cout << ">>> ПРОГРЕСС! Стройка перешла на новый этап: ";
+                myBuilding->showCurrentPhase();
+            } else {
+                cout << "Работа идет. Фаза пока прежняя: ";
+                myBuilding->showCurrentPhase();
             }
         }
-        if (choice == 3) {
-            currentWeek += 1;
-            cout << "====Текущая Неделя 'currentWeek'===='f'" << endl;
-            myBuilding->countCurrentPhase(tempFloor, tempSquare, countPower, currentWeek);
-            myBuilding->showCurrentPhase(myBuilding->getCurrentPhase());
-        }
         if (choice == 4) {
-            cout << "====Статистика====\n";
-            cout << "====Текущая Неделя 'currentWeek'===='f'\n" << endl;
+            cout << "\n==== СТАТИСТИКА ====\n";
+            cout << "Текущая неделя: " << currentWeek << "\n";
             cout << "====Текущая Фаза====\n";
-            myBuilding->showCurrentPhase(myBuilding->getCurrentPhase());
-            cout << "====Рабочие====\n";
-            myArchitector->getName();
-            myIngener->getName();
-            myBuilder->getName();
-            cout << "====Объекты====\n";
-            myBuilding->getName();
-            myBuilding->getFloor();
-            myBuilding->getSquare();
+
+            if (myBuilding != nullptr) {
+                cout << "Объект: " << myBuilding->getName() << " (" << myBuilding->getFloor() << " эт., " << myBuilding
+                        ->getSquare() << " м2)\n";
+                cout << "Статус: ";
+                myBuilding->showCurrentPhase();
+            } else {
+                cout << "Объектов нет.\n";
+            }
+
+            if (currentWorker != nullptr) {
+                cout << "Текущий рабочий: " << currentWorker->getName() << " (Сила: " << countPower << ")\n";
+            } else {
+                cout << "Рабочих нет.\n";
+            }
+        } else if (choice == 0) {
+            cout << "Завершение Программы...\n";
         } else {
-            cout << "====Завершение Программы====";
-            choice = 0;
+            cout << "Неверный ввод!\n";
         }
     }
-    delete myBuilding;
-    delete myArchitector;
-    delete myIngener;
-    delete myBuilder;
+    // Очистка памяти при выходе
+    if (myBuilding != nullptr) delete myBuilding;
+    if (currentWorker != nullptr) delete currentWorker;
 }
+
 
 // void Controller::clearMemorry() {
 //     delete myBuilding;
