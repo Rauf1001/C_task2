@@ -13,7 +13,7 @@ void Controller::writeController() {
     Building *myBuilding = nullptr;
     IWorker *currentWorker = nullptr;
 
-    choice = -1;
+    // choice = -1;
     countPower = 0;
 
 
@@ -102,6 +102,8 @@ void Controller::writeController() {
             cout << "Неверный ввод!\n";
         }
     }
+
+
     // Очистка памяти при выходе
     if (myBuilding != nullptr) delete myBuilding;
     if (currentWorker != nullptr) delete currentWorker;
