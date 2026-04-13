@@ -1,12 +1,14 @@
 #include <iostream>
 #include <string>
+
+#include "Controller.h"
 #include "Interfaces/Builder.h"
 #include "Controller.h"
 
 using namespace std;
-
+// namespace BuilderSim;
 int main() {
-    Controller myController;
+    BuilderSim::Controller myController;
     myController.writeController();
-    // return 0;
+    return 0;
 }

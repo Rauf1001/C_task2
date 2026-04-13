@@ -1,11 +1,12 @@
 #pragma once
 #include "IWorker.h"
 
+namespace BuilderSim {
+    class Architector : public IWorkerSim::IWorker {
+    public:
+        Architector(std::string name, int age);
 
-class Architector : public IWorker {
-public:
-    Architector(string name, int age);
+        double getCoefficient() override;
 
-    double getCoefficient() override;
-
-};
+    };
+}

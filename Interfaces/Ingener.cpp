@@ -1,11 +1,12 @@
 #include "Ingener.h"
+using namespace std;
+namespace BuilderSim {
+    Ingener::Ingener(string name, int age) : IWorker(name,age){
 
-Ingener::Ingener(string name, int age) : IWorker(name,age){
+    }
 
+    double Ingener::getCoefficient() {
+        return 1.5;
+    }
 }
-
-double Ingener::getCoefficient() {
-    return 1.5;
-}
-
 

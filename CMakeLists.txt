@@ -18,4 +18,6 @@ add_executable(
         Interfaces/IWorker.cpp
         Controller.cpp
         Controller.h
+        ConstructionManager.cpp
+        ConstructionManager.h
 )

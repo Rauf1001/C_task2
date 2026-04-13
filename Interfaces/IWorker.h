@@ -1,18 +1,21 @@
 #pragma once
 #include <string>
 
-using namespace std;
+// using namespace std;
+namespace BuilderSim {
 
-class IWorker {
-protected:
-    string name;
-    int age;
-public:
-    IWorker(string name, int age);
-    virtual ~IWorker();
+    class IWorker {
 
-    string getName();
-    int getAge();
+    protected:
+        std::string  name;
+        int age;
+    public:
+        IWorker(std::string  name, int age);
+        virtual ~IWorker();
 
-    virtual double getCoefficient() = 0;
-};
+        std::string  getName();
+        int getAge();
+
+        virtual double getCoefficient() = 0;
+    };
+}
