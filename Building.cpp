@@ -2,8 +2,9 @@
 
 #include <iostream>
 using namespace std;
+
 namespace BuilderSim {
-    Building::Building(const std::string& n, int f, double s) {
+    Building::Building(const std::string &n, int f, double s) {
         this->name = n;
         floor = f;
         square = s;
@@ -14,7 +15,7 @@ namespace BuilderSim {
     Building::~Building() {
     }
 
-    const string& Building::getName() const { return name; }
+    const string &Building::getName() const { return name; }
 
     int Building::getFloor() const { return floor; }
 
@@ -40,20 +41,15 @@ namespace BuilderSim {
         if (currentPhase >= 3)
             return false;
 
-        // double powerInWeek = 0.0;
-
-        // const double phaseRequirement = (floor * square) / 3.0;
-        // // const double powerInWeek = countArch * (currentWeek * 5.0);
         if (currentPhase == 0) {
             powerInWeek = powerArch * (currentWeek * 5.0);
         } else if (currentPhase == 1) {
             powerInWeek = powerIng * (currentWeek * 5.0);
-        }else if  (currentPhase == 2){
+        } else if (currentPhase == 2) {
             powerInWeek = powerBuild * (currentWeek * 5.0);
         }
 
         const double phaseRequirement = (floor * square) / 3.0;
-
 
 
         if (powerInWeek >= phaseRequirement) {
@@ -62,24 +58,4 @@ namespace BuilderSim {
         }
         return false;
     }
-
-    // double Building::countCurrentPower(double powerArch, double powerIng, double powerBuild, int currentWeek ) {
-    //     if (currentPhase == 0) {
-    //         powerInWeek = powerArch * (currentWeek * 5.0);
-    //     } else if (currentPhase == 1) {
-    //         powerInWeek = powerIng * (currentWeek * 5.0);
-    //     }else {
-    //         powerInWeek = powerBuild * (currentWeek * 5.0);
-    //     }
-    //     return powerInWeek;
-    // }
-    // int Building::changeCoeffWorker(int currentWeek, int currentPhase) {
-    //     if (currentPhase == 1) {
-    //
-    //     }
-    // }
-
-    // int Building::countCurrentPhase(int phase) {
-    //     currentPhase
-    // }
 }

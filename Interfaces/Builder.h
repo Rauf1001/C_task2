@@ -1,7 +1,7 @@
 #pragma once
 #include "IWorker.h"
 namespace BuilderSim {
-    class Builder: public IWorkerSim::IWorker {
+    class Builder: public IWorker::IWorker {
     public:
         Builder(std::string name, int age);
 

@@ -1,8 +1,8 @@
 #include "Builder.h"
 using namespace std;
-namespace BuilderSim {
-    Builder::Builder(string name, int age) : IWorker(name,age) {
 
+namespace BuilderSim {
+    Builder::Builder(string name, int age) : IWorker(name, age) {
     }
 
     double Builder::getCoefficient() {

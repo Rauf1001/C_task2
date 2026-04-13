@@ -14,76 +14,36 @@ namespace BuilderSim {
         delete currentWorker;
     }
 
-    void ConstructionManager::startProgram(string name ,int floor,double square) {
+    void ConstructionManager::startProgram(string name, int floor, double square) {
         delete myBuilding;
         myBuilding = new Building(name, floor, square);
         cout << "\nУспешно создан объект " << myBuilding->getName() << "\nТекущая фаза: ";
         myBuilding->showCurrentPhase();
-
-
     }
-    // void Construction::showCurrentPhase() {
-    //     if (currentPhase == 0) {
-    //         cout << ("Архтектурная Фаза") << endl;
-    //     } else if (currentPhase == 1) {
-    //         cout << ("Инженерная Фаза") << endl;
-    //     } else if (currentPhase == 2) {
-    //         cout << ("Строительная Фаза") << endl;
-    //     } else {
-    //         cout << ("Строительство Успешно Закончено") << endl;
-    //     }
-    // }
 
-    bool ConstructionManager::hireWorker(int type,string name, int  age) {
+
+    bool ConstructionManager::hireWorker(int type, string name, int age) {
         delete currentWorker;
         currentWorker = nullptr;
 
         if (type == 1) {
             currentWorker = new Architector(name, age);
             powerArch += currentWorker->getCoefficient();
-        }else if (type == 2) {
+        } else if (type == 2) {
             currentWorker = new Ingener(name, age);
             powerIng += currentWorker->getCoefficient();
-        }else if (type == 3) {
+        } else if (type == 3) {
             currentWorker = new Builder(name, age);
             powerBuild += currentWorker->getCoefficient();
-        }else {
+        } else {
             cout << "Ошибка выбора профессии!" << endl;
             return false;
-            // continue; // Начинаем цикл заново
         }
-        cout << format("\nУспешно нанят: {} (Коэф: {})",currentWorker->getName(),currentWorker->getCoefficient());
+        cout << format("\nУспешно нанят: {} (Коэф: {})", currentWorker->getName(), currentWorker->getCoefficient());
 
         return true;
-
     }
 
-    // bool Construction::hireWorker(double powerArch, double powerIng, double powerBuild, int currentWeek) {
-    //     if (currentPhase >= 3)
-    //         return false;
-    //
-    //     // double powerInWeek = 0.0;
-    //
-    //     // const double phaseRequirement = (floor * square) / 3.0;
-    //     // // const double powerInWeek = countArch * (currentWeek * 5.0);
-    //     if (currentPhase == 0) {
-    //         powerInWeek = powerArch * (currentWeek * 5.0);
-    //     } else if (currentPhase == 1) {
-    //         powerInWeek = powerIng * (currentWeek * 5.0);
-    //     }else if  (currentPhase == 2){
-    //         powerInWeek = powerBuild * (currentWeek * 5.0);
-    //     }
-    //
-    //     const double phaseRequirement = (floor * square) / 3.0;
-    //
-    //
-    //
-    //     if (powerInWeek >= phaseRequirement) {
-    //         currentPhase += 1;
-    //         return true;
-    //     }
-    //     return false;
-    // }
 
     void ConstructionManager::phaseChanged() {
         if (myBuilding == nullptr) {
@@ -124,10 +84,3 @@ namespace BuilderSim {
         }
     }
 }
-// void Construction::clearMemory() {
-//     delete myBuilding;
-//     myBuilding = nullptr;
-//
-//     delete currentWorker;
-//     currentWorker = nullptr;
-// }

@@ -2,8 +2,7 @@
 using namespace std;
 
 namespace BuilderSim {
-    Architector::Architector(string name, int age): IWorker(name,age) {
-
+    Architector::Architector(string name, int age) : IWorker(name, age) {
     }
 
     double Architector::getCoefficient() {
