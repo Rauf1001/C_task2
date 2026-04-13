@@ -1,6 +1,7 @@
 #pragma once
+#include <map>
 #include <string>
-
+#include <vector>
 #include "Building.h"
 #include "Interfaces/IWorker.h"
 
@@ -10,6 +11,16 @@ namespace BuilderSim {
     private:
         Building *myBuilding = nullptr;
         IWorker *currentWorker = nullptr;
+
+        // std::multimap<std::string,double> workers;
+        // struct WorkerRecord {
+        //     std::string name;
+        //     double power;
+        //
+        // };
+        std::vector<IWorker*> workers;
+
+        // std::vector<WorkerRecord> workers;
 
 
         int choice = -1;
