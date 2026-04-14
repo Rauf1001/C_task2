@@ -43,5 +43,6 @@ namespace BuilderSim {
         void printStatics();
 
         void phaseChanged();
+        int getWorkersCount() const { return workers.size(); }
     };
 }

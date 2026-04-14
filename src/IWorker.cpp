@@ -1,4 +1,5 @@
-#include "IWorker.h"
+#include "../include/Interfaces/IWorker.h"
+#include <string>
 
 using namespace std;
 namespace BuilderSim {

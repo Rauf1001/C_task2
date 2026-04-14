@@ -1,10 +1,10 @@
-#include "Controller.h"
+#include "../include/Controller.h"
 
-#include "Building.h"
+#include "../include/Building.h"
 #include <iostream>
 #include <format>
 
-#include "ConstructionManager.h"
+#include "../include/ConstructionManager.h"
 
 using namespace std;
 
@@ -26,7 +26,7 @@ namespace BuilderSim {
 
             if (choice == 1) {
                 cout << format("\n==== Новая Стройка ====\n");
-                cout << format("Введите Имя Объекта (одним словом): ");
+                cout << format("Введите Имя Объекта: ");
 
                 cin.ignore();
                 getline(cin, tempName);

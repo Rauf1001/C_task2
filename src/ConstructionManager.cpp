@@ -1,12 +1,12 @@
-#include "ConstructionManager.h"
+#include "../include/ConstructionManager.h"
 
 #include <iostream>
 #include <format>
 
-#include "Building.h"
-#include "Interfaces/Architector.h"
-#include "Interfaces/Builder.h"
-#include "Interfaces/Ingener.h"
+#include "../include/Building.h"
+#include "../include/Interfaces/Architector.h"
+#include "../include/Interfaces/Builder.h"
+#include "../include/Interfaces/Ingener.h"
 
 using namespace std;
 
@@ -14,6 +14,11 @@ namespace BuilderSim {
     ConstructionManager::~ConstructionManager() {
         delete myBuilding;
         delete currentWorker;
+
+        for (IWorker* worker : workers) {
+            delete worker;
+        }
+        workers.clear();
     }
 
     void ConstructionManager::startProgram(string name, int floor, double square) {

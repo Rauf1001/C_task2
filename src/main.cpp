@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Controller.h"
+#include "../include/Controller.h"
 
 
 using namespace std;

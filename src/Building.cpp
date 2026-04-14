@@ -1,4 +1,4 @@
-#include "Building.h"
+#include "../include/Building.h"
 
 #include <iostream>
 using namespace std;
