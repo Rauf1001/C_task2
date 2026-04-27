@@ -15,7 +15,7 @@ namespace BuilderSim {
         delete myBuilding;
         delete currentWorker;
 
-        for (IWorker* worker : workers) {
+        for (IWorker *worker: workers) {
             delete worker;
         }
         workers.clear();
@@ -36,23 +36,14 @@ namespace BuilderSim {
             currentWorker = new Architector(name, age);
             powerArch += currentWorker->getCoefficient();
             workers.push_back(currentWorker);
-            // workers.push_back({currentWorker->getName(),currentWorker->getCoefficient()});
-            // workers[currentWorker->getName()] = currentWorker->getCoefficient();
-            // workers.push_back(currentWorker->getName(),currentWorker->getCoefficient());
         } else if (type == 2) {
             currentWorker = new Ingener(name, age);
             powerIng += currentWorker->getCoefficient();
             workers.push_back(currentWorker);
-            // workers.push_back({currentWorker->getName(),currentWorker->getCoefficient()});
-            // workers[currentWorker->getName()] = currentWorker->getCoefficient();
-            // workers.push_back(currentWorker->getName());
         } else if (type == 3) {
             currentWorker = new Builder(name, age);
             powerBuild += currentWorker->getCoefficient();
             workers.push_back(currentWorker);
-            // workers.push_back({currentWorker->getName(),currentWorker->getCoefficient()});
-            // workers[currentWorker->getName()] = currentWorker->getCoefficient();
-            // workers.push_back(currentWorker->getName());
         } else {
             cout << format("Ошибка выбора профессии!\n");
             return false;
@@ -86,7 +77,8 @@ namespace BuilderSim {
         cout << format("====Текущая Фаза====\n");
 
         if (myBuilding != nullptr) {
-            cout << format("Объект: {} ({} эт., {} м2)\n", myBuilding->getName(), myBuilding->getFloor(), myBuilding->getSquare());
+            cout << format("Объект: {} ({} эт., {} м2)\n", myBuilding->getName(), myBuilding->getFloor(),
+                           myBuilding->getSquare());
             cout << format("Статус: ");
             myBuilding->showCurrentPhase();
         } else {
@@ -94,20 +86,10 @@ namespace BuilderSim {
         }
 
         if (currentWorker != nullptr) {
-            for (int i = 0; i< workers.size();i++) {
-                cout << format("Текущий рабочий: {} (Сила: {})\n", currentWorker->getName(),currentWorker->getCoefficient());
-
+            for (int i = 0; i < workers.size(); i++) {
+                cout << format("Текущий рабочий: {} (Сила: {})\n", currentWorker->getName(),
+                               currentWorker->getCoefficient());
             }
-
-            // for (const auto& [name, power]: workers) {
-            //     cout << format("Текущий рабочий: {} (Сила: {})\n", name, power);
-            // }
-            // for (int i = 0; i< workers.size();i++) {
-            //     for (int j = 0; i< workers.size();j++) {
-            //         cout << format("Текущий рабочий: {} (Сила: {})\n", workers[i][j], powerInWeek);
-            //     }
-            // }
-            // cout << format("Текущий рабочий: {} (Сила: {})\n", currentWorker->getName(), powerInWeek);
         } else {
             cout << format("Рабочих нет.\n");
         }
